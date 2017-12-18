@@ -1,0 +1,30 @@
+.input {
+    padding : 10px;
+}
+
+#title {
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.row {
+    padding: 10px;
+    padding-top: 50px;
+}
+ 
+.container-fluid {
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+body {
+    background: lightblue
+}
+
+.form-control {
+    width: 250px;
+}
+
+.btn-primary {
+    width: 150px;
+}

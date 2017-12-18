@@ -31,7 +31,7 @@ function setInstance(jInstance) {
     c = jInstance.cost;   // matrice dei costi
     req = jInstance.req;  // matrice delle richieste
     cap = jInstance.cap;  // vattore delle capacità
-    alert("Got instance " + jInstance.name + " n=" + n);
+    document.getElementById("instanceOk").innerHTML = "Got instance " + jInstance.name + " n=" + n + " m=" +m
 }
 
 function checkSol(sol) {

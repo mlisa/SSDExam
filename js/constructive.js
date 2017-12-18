@@ -27,12 +27,15 @@ function constructive() {
         }
     }
     
-    var zcheck = checkSol(sol);
-    console.log("Cost " + cost + " zcheck " + zcheck + " sol " + sol);
-    zub = cost;
-    solbest = sol;
-    console.log("Constructive, zub=" + zub);
-    //alert("Constructive, zub=" + zub);
-    console.log(sol);
+    if(checkSol(sol) == cost){
+        zub = cost;
+        solbest = sol;
+    
+        document.getElementById("solution").innerHTML = solbest
+        document.getElementById("finalCost").innerHTML = zub
+    } else {
+        console.log("Non ammissibile")
+    }
+   
 
 }

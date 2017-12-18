@@ -3,34 +3,52 @@
 <head>
     <meta charset="utf-8" />
     <title> dbTest Client</title>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/globalVar.js"></script>
     <script src="js/loadGAP.js"></script>
     <script src="js/constructive.js"></script>
     <script src="js/onezero.js"></script>
     <script src="js/ils.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/grasp.js"></script>
-    
 </head>
 <body>
-    <div>
-        <h2>Operation on DB</h2><br />
-        ID: <input type="text" id="txtId" /> QNT: <input type="text" id="txtNewQuant" /> <br />
-        <input type="button" value="Read one by id" onclick="findById();" />
-        <input type="button" value="Add new client" onclick="insertId();" />
-        <input type="button" value="Update client" onclick="updateId();" />
-        <input type="button" value="Delete client" onclick="deleteId();" />
-        <input type="button" value="Read all" onclick="findAll();" /><br /><br />
+    <div id="title"><h1><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Euristiche</h1></div>
+    <div class="container-fluid">         
+        <div class="input"><h4>Istanza:</h4> <input  class="form-control" value="orlibrary/gap1/gap1_0.json" type="text" id="inputRemote" />
+            <input type="button" class="btn btn-primary" value="getRemoteInstance" onclick="readWithCORS();" />
+            <div id="instanceOk"></div>            
+        </div>
+        <div class="input"><h4>Tempo concesso (ms):</h4> <input  class="form-control" value="5000" type="text" id="time" /></div>            
+        <div class="row">
+            <div class="col-md-2">
+                <h4>Euristica costruttiva</h4>
+                <br><input type="button" class="btn btn-primary" value="Constructive" onclick="constructive();" /><br><br><br><br><br>
+                <h4>1-0 Opt</h4>
+                <br><input type="button" class="btn btn-primary" value="1-0" onclick="runOnezero();" />
+                
+            </div>
+            <div class="col-md-2">
+                    <h4>Iterated Local Search</h4>
+                    <h5>Valore di alpha:</h5> <input  class="form-control" id="alpha" type="text" value="0.45">
+                    <input type="button" class="btn btn-primary"value="ILS" onclick="runIls();" /><br><br>
+                    <h4>GRASP</h4>
+                    <h5>Numero di candidati:</h5> <input  class="form-control"id="cand" type="text" value="3">
+                    <input type="button" class="btn btn-primary" value="GRASP" onclick="runGrasp();" /><br><br>    
+            </div>
+            <div class="col-md-2">
+                    <br><br><br><br>
+                <h4>Soluzione: <p id="solution"></p></h4><br/>
+                <h4>Costo:     <p id="finalCost"></p></h4><br><br><br> 
+                <input type="button" class="btn btn-primary" value="Reset" onclick="reset();" />   
+            </div>
+          </div>
         
-        <h2>Optimization</h2> 
-        JSON: <input value="homemade/toy.json" type="text" id="inputRemote" /><br />              
-        <input type="button" value="getInstance" onclick="getInstance();" />
-        <input type="button" value="getRemoteInstance" onclick="readWithCORS();" />
-        <input type="button" value="Constructive" onclick="constructive();" />
-        <input type="button" value="1-0" onclick="runOnezero();" />
-        <input type="button" value="ILS" onclick="ils();" />
-        <input type="button" value="GRASP" onclick="runGrasp();" />
+        
+
 
     </div>
 </body>

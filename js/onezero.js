@@ -1,15 +1,23 @@
 function runOnezero() {
+    startTimer()
     constructive()
-    var z = onezero(c);
+    zub = onezero(c);
     var zcheck = checkSol(sol)
-    console.log("zub " + z + " check " + zcheck + " sol " + sol)
+
+    if(z == zcheck){
+        document.getElementById("solution").innerHTML = sol
+        document.getElementById("finalCost").innerHTML = zub
+    } else {
+        console.log("non ammissibile")
+    }
+    
 }
 
 function onezero(cost) {
+
     var capLeft = cap.slice()
     var z = 0;
     for (j = 0; j < n; j++) {
-        //console.log(sol[j])
         capLeft[sol[j]] -= req[sol[j]][j]
         z += cost[sol[j]][j];
     }
@@ -30,8 +38,13 @@ function onezero(cost) {
             }
             if (isImproved) break;
         }
-    } while (isImproved);
-    return z
+    } while (!expired() && isImproved);
+
+    if(z == checkSol(sol)){
+        return z
+    } else {
+        return Number.MAX_VALUE
+    }
 }
 
 
