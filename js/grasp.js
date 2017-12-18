@@ -28,38 +28,35 @@ function graspConstructive(candListSize) {
             }                    
         }               
     }
-
-    if (cost < zub) {
-        zub = cost;
-        solbest = sol.slice();
-    }
-
     return cost       
-
 }
 
 function grasp(candListSize) {
     var z;
-    if (zub === undefined) {
-        zub = Number.MAX_VALUE
-    }
-    console.log("Sol prima del while" + sol)
+
     while (!expired()) {
         z = graspConstructive(candListSize)
-        if (z < zub && z == checkSol(sol)) {
-            zub = z
-            solbest = sol.slice()
-        }
-        z = onezero(c)
+        if(z == checkSol(sol)){       
+            if (z < zub) {
+                zub = z
+                solbest = sol.slice()
+            }
+            z = onezero(c)
 
-        if (z < zub && z == checkSol(sol)) {
-            zub = z
-            solbest = sol.slice()
+            if (z < zub && z == checkSol(sol)) {
+                zub = z
+                solbest = sol.slice()
+            }
         }
     }
-    console.log("Sol dopo il while " + sol)
-    document.getElementById("solution").innerHTML = solbest
-    document.getElementById("finalCost").innerHTML = zub 
+    if(checkSol(solbest) == zub){
+        document.getElementById("solution").innerHTML = solbest
+        document.getElementById("finalCost").innerHTML = zub
+    } else {
+        alert("Non ammissibile")
+    }
+
+     
 
 }
 

@@ -21,6 +21,7 @@ function reset(){
     solbest = new Array(n)
     zub = Number.MAX_VALUE
     zlbBest = Number.MAX_VALUE
+    jInstance = null
     document.getElementById("solution").innerHTML = ""
     document.getElementById("finalCost").innerHTML = ""
 }
