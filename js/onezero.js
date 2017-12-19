@@ -1,20 +1,22 @@
 function runOnezero() {
-    startTimer()
-    constructive()
-    zub = onezero(c);
-    var zcheck = checkSol(sol)
+    if(jInstance != null){
+        startTimer()
+        constructive()
+        zub = onezero(c);
+        var zcheck = checkSol(sol)
 
-    if(z == zcheck){
-        document.getElementById("solution").innerHTML = sol
-        document.getElementById("finalCost").innerHTML = zub
+        if(zub == zcheck){
+            document.getElementById("solution").innerHTML = sol + "<h5>Size: " + sol.length + " </h5> "
+            document.getElementById("finalCost").innerHTML = zub
+        } else {
+            alert("[Local Search 1-0] Soluzione trovata non ammissibile")
+        }
     } else {
-        console.log("non ammissibile")
+        alert("Errore: nessuna istanza caricata")
     }
-    
 }
 
 function onezero(cost) {
-
     var capLeft = cap.slice()
     var z = 0;
     for (j = 0; j < n; j++) {
@@ -43,7 +45,7 @@ function onezero(cost) {
     if(z == checkSol(sol)){
         return z
     } else {
-        return Number.MAX_VALUE
+        return 0
     }
 }
 

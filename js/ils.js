@@ -30,13 +30,21 @@ function ils(alpha) {
         } 
 
     }
-
-    document.getElementById("solution").innerHTML = solbest
-    document.getElementById("finalCost").innerHTML = zlbBest
     
 }
 
 function runIls(){
-    var alpha = parseFloat(document.getElementById("alpha").value);
-    ils(0.45)
+    if(jInstance != null){
+        var alpha = parseFloat(document.getElementById("alpha").value);
+        ils(0.45)
+        if(solbest != undefined && checkSol(solbest) == zlbBest){
+            document.getElementById("solution").innerHTML =  solbest + "<h5>Size: " + solbest.length + " </h5> "
+            document.getElementById("finalCost").innerHTML = zlbBest
+        } else {
+            alert("[Iterative Local Search] Soluzione trovata non ammissibile")
+        }
+    } else {
+        alert("Errore: nessuna istanza caricata")
+    }
+    
 }

@@ -49,19 +49,21 @@ function grasp(candListSize) {
             }
         }
     }
-    if(checkSol(solbest) == zub){
-        document.getElementById("solution").innerHTML = solbest
-        document.getElementById("finalCost").innerHTML = zub
-    } else {
-        alert("Non ammissibile")
-    }
-
-     
-
 }
 
-function runGrasp() {+
-    startTimer()
-    var cand = parseInt(document.getElementById("cand").value)
-    grasp(cand);
+function runGrasp() {
+    if(jInstance != null){      
+        startTimer()
+        var cand = parseInt(document.getElementById("cand").value)
+        grasp(cand);
+        if(solbest != undefined && checkSol(solbest) == zub){
+            document.getElementById("solution").innerHTML = solbest + "<h5>Size: " + solbest.length + " </h5> "
+            document.getElementById("finalCost").innerHTML = zub
+        } else {
+            alert("[GRASP] Soluzione trovata non ammissibile")
+            console.log(sol)
+        }
+    } else {
+        alert("Errore: nessuna istanza caricata")
+    }
 }

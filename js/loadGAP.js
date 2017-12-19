@@ -40,7 +40,7 @@ function checkSol(sol) {
     for (i = 0; i < m; i++) capused[i] = 0;
     // controllo assegnamenti
     for (j = 0; j < n; j++)
-        if (sol[j] < 0 || sol[j] >= m || sol[j] === undefined) {
+        if ( sol[j] === undefined || sol[j] < 0 || sol[j] >= m ) {
             z = Number.MAX_VALUE;
             return z;
         }

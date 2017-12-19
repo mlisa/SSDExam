@@ -27,15 +27,24 @@ function constructive() {
         }
     }
     
-    if(checkSol(sol) == cost){
-        zub = cost;
-        solbest = sol;
     
-        document.getElementById("solution").innerHTML = solbest
-        document.getElementById("finalCost").innerHTML = zub
-    } else {
-        console.log("Non ammissibile")
-    }
    
 
+}
+
+function runConstructive(){
+    if(jInstance != null){
+        constructive()
+        if(checkSol(sol) == cost){
+            zub = cost;
+            solbest = sol;
+        
+            document.getElementById("solution").innerHTML = solbest + "<h5>Size: " + solbest.length + " </h5> "
+            document.getElementById("finalCost").innerHTML = zub
+        } else {
+            alert("[Costruttiva] Soluzione trovata non ammissibile")
+        }
+    } else {
+        alert("Errore: nessuna istanza caricata")
+    }
 }
